@@ -25,7 +25,7 @@ import { VideoController } from './video/video.controller';
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: './public',
+      rootPath: './publlic', // trong Express là app.use(express.static(".")), trong nest thì cần import lib ServeStaticModule, dùng để tạo 1 đường dẫn đến file của mình => export file
     }),
     AuthModule,
   ],
@@ -34,10 +34,11 @@ import { VideoController } from './video/video.controller';
 })
 
 // DI : dependency injection
+// custom middleware: class (nên xài hơn) và function
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(loggerMiddleware).forRoutes(UserController);
-    consumer.apply(loggerMiddlewareTest).forRoutes(VideoController);
+    consumer.apply(loggerMiddleware).forRoutes(UserController); // function middleware
+    consumer.apply(loggerMiddlewareTest).forRoutes(VideoController); // class middleware
   }
 }
 // export class AppModule {}

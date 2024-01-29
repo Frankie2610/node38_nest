@@ -20,7 +20,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('user')
-// @UseGuards(AuthGuard("jwt")) //middleware authentication
+@UseGuards(AuthGuard('jwt')) // middleware authentication: AuthGuard, coi token có hợp lệ không, chưa check token đó có phải của user gửi request không?
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -32,7 +32,7 @@ export class UserController {
   }
 
   // khi call tới SQL hay system khác thì response của controller là Promise<>
-  @UseGuards(AuthGuard('jwt')) // middleware authentication: AuthGuard
+  // @UseGuards(AuthGuard('jwt'))
   @ApiParam({ name: 'page', required: false })
   @ApiParam({ name: 'size', required: false })
   @ApiQuery({

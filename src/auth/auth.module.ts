@@ -7,6 +7,6 @@ import { JwtStrategy } from 'src/strategy/jwt.strategy';
 @Module({
   imports: [JwtModule.register({})],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy], // do JwtStrategy đã custom rồi nên đểowr providers, còn JwtModule.register({}) là thư viện ngoài nên để trong imports
 })
 export class AuthModule {}

@@ -29,7 +29,7 @@ export class AuthController {
     // --- nếu ko trùng -> báo lỗi
     // Nếu ko tồn tại user => lỗi
     // khi define API => tạo API trong controller và function tương ứng trong service
-    return this.authService.login(body);
+    return this.authService.login(body); // truyền body xuống login trong auth.service xử lý tiếp
   }
 
   @Post('/sign-up')

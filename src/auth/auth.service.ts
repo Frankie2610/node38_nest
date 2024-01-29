@@ -21,12 +21,14 @@ export class AuthService {
   prisma = new PrismaClient();
   async login(body: loginDTO): Promise<any> {
     let { email, pass_word } = body;
+
     // B1: kiểm tra email có tồn tại trong DB hay không
     let checkUser = await this.prisma.users.findFirst({
       where: {
         email: email,
       },
     });
+
     if (checkUser) {
       // nếu user tồn tại trong DB => check password
       let isCorrectPass = bcrypt.compareSync(pass_word, checkUser.pass_word);

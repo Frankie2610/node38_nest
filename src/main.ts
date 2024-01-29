@@ -7,13 +7,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe()); // middleware validation field trong body of request
 
-  // define  thông tin cơ bản của swagger
+  // define thông tin cơ bản của swagger
   const config = new DocumentBuilder()
-    .setTitle('Capstone NODE38')
+    .setTitle('Capstone NODE38') // đặt tên cho swagger
     .addBearerAuth()
     .setDescription('Đây là list API về Youtube')
-    .setVersion('1.0')
-    .build();
+    .setVersion('1.0') // version đầu tiên
+    .build(); // build swagger
 
   // apply swagger cho NestJS
   const swagger = SwaggerModule.createDocument(app, config);
@@ -21,7 +21,7 @@ async function bootstrap() {
   // setup swagger với đường dẫn là /swagger
   SwaggerModule.setup('swagger', app, swagger);
 
-  // app.use(loggerMiddleware);
+  // app.use(loggerMiddleware); // middleware cho toàn bộ API
   await app.listen(3000);
 }
 bootstrap();
