@@ -1,13 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsEmpty } from 'class-validator';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 // npm i class-validator
 
 export default class loginDTO {
   @ApiProperty({ type: String, description: 'email' })
-  @IsEmail()
+  @IsEmail() // yêu cầu địng dạng là email, cần cài thêm thư viện "class-validator"
   email: string;
 
   @ApiProperty({ type: String, description: 'pass_word' })
-  @IsEmpty()
+  @IsNotEmpty()
   pass_word: string;
 }

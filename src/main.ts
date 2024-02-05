@@ -10,7 +10,7 @@ async function bootstrap() {
   // define thông tin cơ bản của swagger
   const config = new DocumentBuilder()
     .setTitle('Capstone NODE38') // đặt tên cho swagger
-    .addBearerAuth()
+    .addBearerAuth() // => authorize ở góc phải swagger, các api nào cần authen thì sẽ auto truyền xuống api đó
     .setDescription('Đây là list API về Youtube')
     .setVersion('1.0') // version đầu tiên
     .build(); // build swagger
