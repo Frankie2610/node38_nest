@@ -16,7 +16,8 @@ COPY . .
 # B4: run npm install
 RUN npm install
 
-# B5: expose port cho bên ngoài connect tới
+# B5: expose port cho bên ngoài browser/frontend connect tới <==>  await app.listen(3001) trong file main.ts
+# 2 port này phải trùng nhau
 EXPOSE 3001
 
 # B6: start server trong image

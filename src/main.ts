@@ -22,7 +22,13 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, swagger);
 
   // app.use(loggerMiddleware); // middleware cho toàn bộ API
-  await app.listen(3000);
+  await app.listen(3001); // <==> https://localhost:3001 (?)
 }
 bootstrap();
+
 // npm i @nestjs/passport passport passport-local @nestjs/jwt passport-jwt @types/passport-jwt
+
+// build container
+// docker run -d -p 3000:3001 --name node38_nest node38_nest
+// 3000: port cho browser/frontend (bên ngoài)
+// 3001: port cho image/backend (port backend export ra)

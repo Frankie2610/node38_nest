@@ -1,3 +1,4 @@
+# docker-compose: giúp build nhiều container một lúc
 version: '3'
 services:
   mysql_db:
